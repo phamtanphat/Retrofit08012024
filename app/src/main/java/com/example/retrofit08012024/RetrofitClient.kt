@@ -9,6 +9,9 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     private val retrofit: Retrofit by lazy { init() }
+    private val apiService: ApiService by lazy { retrofit.create(ApiService::class.java) }
+
+    fun getService() = apiService
 
     private fun init(): Retrofit {
         val gson = GsonBuilder().setLenient().create()
